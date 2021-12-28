@@ -10,12 +10,14 @@
     <br><br>
     <a href="logout.php">Click here</a> to Logout.
 
-    <!--<form action="functions.php" method="post">-->
-    <!--<p class="mt-3"><label for="newfilename"></label></p>-->
-    <!--<input type="text" name="newfilename" id="newfilename" value="" class="form-control">-->
-    <!---->
-    <!--    <input type="submit" class="btn btn-success" value="Create New File">-->
-    <!--</form>-->
+    <div class="col-4">
+        <form action="myfunctions.php" method="post">
+            <p class="mt-3"><label for="newfilename"></label></p>
+            <input type="text" name="newfilename" id="newfilename" value="" placeholder="Enter New File Name" class="form-control">
+            <br>
+            <input type="submit" class="btn btn-success" value="Create New File" name="submit_create_new_file">
+        </form>
+    </div>
     <br>
     <?php
     //$content = scandir('.');
