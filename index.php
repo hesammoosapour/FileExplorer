@@ -6,19 +6,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
+    <title>My File Explorer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
 
 
 </head>
 <body>
+
 <section class="h-100">
     <div class="container h-100">
         <div class="row justify-content-md-center h-100">
             <div class="card-wrapper">
                 <div class="card fat ">
                     <div class="card-body">
-                        <form class="form-signin" action="" method="post" autocomplete="off">
+                        <form class="form-signin" action="login.php" method="post" autocomplete="off">
                             <div class="form-group">
                                 <div class="brand"></div>
                                 <div class="text-center">
@@ -27,31 +30,31 @@
                             </div>
                             <hr />
                             <div class="form-group">
-                                <label for="fm_usr"></label>
-                                <input type="text" class="form-control" id="fm_usr" name="fm_usr" required autofocus>
+                                <label for="Username"></label>
+                                <input type="text" class="form-control"  name="Username" placeholder="Username" required autofocus>
                             </div>
-
-<!--                            <div class="form-group">-->
-<!--                                <label for="fm_pwd"></label>-->
-<!--                                <input type="password" class="form-control" id="fm_pwd" name="fm_pwd" required>-->
-<!--                            </div>-->
 
                             <div class="form-group">
 
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block mt-4" role="button">Send</button>
+                                <input type="submit" class="btn btn-success btn-block mt-4" role="button" value="Send" name="submit_login_form">
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="footer text-center">
+                <div class="footer text-center" style="bottom: 20px;position: absolute">
                     Powered By Hesam Moosapour
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 </body>
 </html>
