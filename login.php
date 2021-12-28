@@ -1,3 +1,4 @@
+<?php include_once 'include.php';?>
 
 <?php
 session_start(); /* Starts the session */
