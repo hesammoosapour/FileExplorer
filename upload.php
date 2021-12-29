@@ -52,6 +52,25 @@
     }else
         $dirPath = './'.$_SESSION['Username'].'';
 
+//
+//    $index = strpos($dirPath, "p=") + strlen($prefix);
+//    $result = substr($string, $index);
+
+    //    if (!empty(strpos($dirPath, '/') )) {
+//        throw  new Exception('Wrong URL');
+//    }
+
+    if (isset($_GET['p']))
+    {
+        if (strpos($_GET['p'], '/') !== false || strpos($_GET['p'], '../') !== false ||
+         strpos($_GET['p'], '..') !== false )
+        {
+            die("<br><h4 class=' badge-danger'>Wrong Request</h4>");
+
+//            throw new Exception('Wrong URL');
+        }
+
+    }
 
     $dir = scandir($dirPath);
 
@@ -128,7 +147,7 @@
         <br>
         <?php
         if (!empty(strpos($CurPageURL, 'p=') )) {  ?>
-            <a href="?view=<?= urlencode($file) ?>&amp;p=<?= urlencode($sub_dir)  ?>"  name="link_file_<?=$file ?>" >
+            <a href="?view=<?= urlencode($file) ?>&amp;p=<?= urlencode($sub_dir) ?>"  name="link_file_<?=$file ?>" >
                 <i class="fa fa-file"></i> <?= $file ?>
             </a>
         <?php }else { ?>

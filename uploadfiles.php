@@ -13,7 +13,7 @@ if(isset($_FILES['fileToUpload'])){
     $extensions= array("jpeg","jpg","png",'pdf','docx');
 
     if(in_array($file_ext,$extensions)=== false){
-        $errors[]="Extension not allowed, please choose a JPEG or PNG file.";
+        $errors[]="Extension not allowed, please choose a JPEG , jpg, png, pdf, docx file.";
     }
 
     if($file_size > 2097152){
