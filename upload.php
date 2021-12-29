@@ -8,6 +8,11 @@
     ?>
     <!--   add csrf later -->
     <br><br>
+    <form action="uploadfiles.php" method="post" enctype="multipart/form-data">
+        Select File to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload" class="btn btn-light">
+        <input type="submit" value="Upload File" name="submit" class="btn btn-success">
+    </form>
 
     <!--    <div class="col-4">-->
     <!--        <form action="myfunctions.php" method="post">-->
