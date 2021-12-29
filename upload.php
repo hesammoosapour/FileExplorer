@@ -8,7 +8,6 @@
     ?>
     <!--   add csrf later -->
     <br><br>
-    <a href="logout.php">Click here</a> to Logout.
 
 <!--    <div class="col-4">-->
 <!--        <form action="myfunctions.php" method="post">-->
@@ -20,11 +19,34 @@
 <!--    </div>-->
     <br>
     <?php
+    $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+    ?>
+    <?php
     //$content = scandir('.');
     //print_r($content);
 
 //    $dir = scandir('./'.$_SESSION['Username'].'/');
-    $dirPath = './'.$_SESSION['Username'];
+//    echo strlen(strpos($CurPageURL, 'p=') + 2);
+//echo    $sub_dir = substr($CurPageURL , 0,);
+
+
+     if (!empty(strpos($CurPageURL, 'p=') ))
+     {
+         $sub_dir = substr($CurPageURL , strpos($CurPageURL, 'p=') + 2);
+
+
+         $dirPath = './'.$_SESSION['Username'].'/'.$sub_dir;
+
+         $string_lenght_supper_path = strlen($CurPageURL) - strlen($sub_dir) - 3;
+         $supper_path =  substr($CurPageURL, 0, $string_lenght_supper_path);
+
+         echo   "<a href=$supper_path   class='btn btn-primary'>" . "Back" . "</a>";
+
+     }else
+         $dirPath = './'.$_SESSION['Username'].'';
+
 
     $dir = scandir($dirPath);
 
@@ -72,5 +94,10 @@
     <?php }  ?>
 
 
-
 </div>
+
+
+<footer class="footer text-center" style="top: 50px;right: 20px;position: absolute" >
+    <a href="logout.php">Click here</a> to Logout.
+
+</footer>
