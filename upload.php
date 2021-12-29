@@ -116,7 +116,11 @@
         {
 //            $file =   "personal_guest/" . $file;
             include 'download-code.php';
-            header("Location: ".$CurPageURL);
+//            header("Location: ".$CurPageURL);
+
+//            $file = preg_replace('/\./', '%2e', $file, substr_count($file, '.') - 1);
+
+//            fopen(urldecode($file));
             header('Content-Disposition: attachment; filename="'.basename($file).'"');
             header('Content-Length: ' . filesize($file));
 
@@ -124,11 +128,11 @@
         <br>
         <?php
         if (!empty(strpos($CurPageURL, 'p=') )) {  ?>
-            <a href="?p=<?= urlencode($sub_dir)  ?>&amp;view=<?= urlencode($file) ?>" download name="link_file_<?=$file ?>" >
+            <a href="?view=<?= urlencode($file) ?>&amp;p=<?= urlencode($sub_dir)  ?>"  name="link_file_<?=$file ?>" >
                 <i class="fa fa-file"></i> <?= $file ?>
             </a>
         <?php }else { ?>
-            <a href="?view=<?= $file ?>" download name="link_file_<?=$file ?>"  >
+            <a href="?view=<?= $file ?>"  name="link_file_<?=$file ?>"  >
                 <i class="fa fa-file"></i> <?= $file ?>
             </a>
         <?php } ?>
