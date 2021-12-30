@@ -1,4 +1,6 @@
 <?php include_once 'Include/header.php';?>
+<title><?= APP_TITLE ?></title>
+
 <div class="container-fluid">
     <?php
     session_start(); /* Starts the session */

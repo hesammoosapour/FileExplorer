@@ -1,23 +1,15 @@
+<!doctype html>
+<html lang="en">
+<title><?= APP_TITLE ?></title>
+
 <?php include_once 'Include/header.php'; ?>
 <?php
 // If logged in then redirecting to upload page
 if (isset($_SESSION['Username']))
-    header('Location:' . 'http://' .$_SERVER['HTTP_HOST']. '/'.$APP_NAME . '/upload.php' );
+    header('Location:' . 'http://' .$_SERVER['HTTP_HOST']. '/'. APP_TITLE . '/upload.php' );
 
 ?>
-<?php define('APP_TITLE', 'My File Explorer'); ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My File Explorer</title>
 
-
-
-</head>
 <body>
 
 <section class="h-100 mt-5">

@@ -1,4 +1,4 @@
-<?php define('APP_TITLE', 'My File Explorer'); ?>
+<?php include_once 'Include/header.php';?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My File Explorer</title>
 
-    <?php include_once 'Include/header.php';?>
 
 
 </head>
