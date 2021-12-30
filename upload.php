@@ -8,9 +8,11 @@
     echo "Welcome " . $_SESSION['Username'] . " To Your Panel";
 
     ?>
-    <!--   add csrf later -->
     <br><br>
     <form action="uploadfiles.php" method="post" enctype="multipart/form-data">
+        <?php   $_SESSION['token'] = md5(uniqid(mt_rand(), true));  ?>
+        <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+
         Select File to upload:
         <input type="file" name="fileToUpload" id="fileToUpload" class="btn btn-light">
         <input type="submit" value="Upload File" name="submit" class="btn btn-success">

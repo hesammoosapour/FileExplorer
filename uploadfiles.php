@@ -20,18 +20,29 @@ if(isset($_FILES['fileToUpload'])){
         $errors[]='File size must be less than 2 MB';
     }
 
-    if(empty($errors)==true){
-        move_uploaded_file($file_tmp,$_SESSION["Username"].'/'.$file_name);
-        header("location: upload.php ") ;
-    }else{
-        foreach ($errors as $error) {
-            echo "<h4 class=' badge-danger'>$error</h4>";
-        }
-        $upload_page_url = 'http://localhost/FileExplorer/upload.php';
 
-        echo   "<a href=$upload_page_url   class='btn btn-primary'>" . "Back" . "</a>";
+    $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+
+    if (!$token || $token !== $_SESSION['token']) {
+        // return 405 http status code
+        header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+        exit;
+    } else {
+        if(empty($errors)==true){
+            move_uploaded_file($file_tmp,$_SESSION["Username"].'/'.$file_name);
+            header("location: upload.php ") ;
+        }else{
+            foreach ($errors as $error) {
+                echo "<h4 class=' badge-danger'>$error</h4>";
+            }
+            $upload_page_url = 'http://localhost/FileExplorer/upload.php';
+
+            echo   "<a href=$upload_page_url   class='btn btn-primary'>" . "Back" . "</a>";
 
 //        throw new Exception($errors );
+        }
     }
+
+
 }
 ?>

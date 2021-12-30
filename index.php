@@ -19,6 +19,8 @@ if (isset($_SESSION['Username']))
                 <div class="card fat ">
                     <div class="card-body">
                         <form class="form-signin" action="login.php" method="post" autocomplete="off">
+                            <?php   $_SESSION['token'] = md5(uniqid(mt_rand(), true));  ?>
+                            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
                             <div class="form-group">
                                 <div class="brand"></div>
                                 <div class="text-center">
@@ -42,7 +44,7 @@ if (isset($_SESSION['Username']))
                     </div>
                 </div>
                 <div class="footer text-center" style="bottom: 20px;position: absolute">
-                    Powered By Hesam Moosapour
+                    <p>Powered By Hesam Moosapour</p>
                 </div>
             </div>
         </div>
