@@ -1,0 +1,29 @@
+<IfModule mod_rewrite.c>
+RewriteEngine Off
+RewriteBase /
+RewriteRule ^index.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(.+\.)?localhost\FileExplorer\ [NC]
+RedirectMatch 404 /\.git
+
+
+#<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
+# Order Allow,Deny
+# Deny from all
+#</FilesMatch>
+
+#<Directory   "C:/xampp/htdocs/dashboard">
+#    Require ip  192.168.1.130
+#</Directory >
+
+
+#<Directory   "C:/xampp/htdocs/">
+#    Require ip 127.0.0.1
+#</Directory >

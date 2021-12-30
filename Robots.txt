@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: http://localhost/FileExplorer/post-sitemap.xml
+Sitemap: http://localhost/FileExplorer/page-sitemap.xml

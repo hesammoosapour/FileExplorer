@@ -1,3 +1,26 @@
+<?php include_once 'include.php';?>
+<?php
+$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ?
+    "https://" : "http://";
+
+$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+if (isset($url))
+{
+    if (strpos($url, '/') !== false || strpos($url, '../') !== false ||
+        strpos($url, '..') !== false )
+    {
+
+        die("<br><h4 class=' badge-danger'>Wrong Request</h4>
+             <a href='index.php' type='button' class='btn btn-primary'>Back</a>");
+
+//            throw new Exception('Wrong URL');
+    }
+
+}
+
+?>
+
 <?php define('APP_TITLE', 'My File Explorer'); ?>
 <!doctype html>
 <html lang="en">
@@ -8,13 +31,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My File Explorer</title>
 
-    <?php include_once 'include.php';?>
 
 
 </head>
 <body>
 
-<section class="h-100">
+<section class="h-100 mt-5">
     <div class="container h-100">
         <div class="row justify-content-md-center h-100">
             <div class="card-wrapper">
