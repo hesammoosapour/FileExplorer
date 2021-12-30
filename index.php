@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="en">
 <title><?= APP_TITLE ?></title>
-
-<?php include_once 'Include/header.php'; ?>
+<?php //session_start(['csrf_rewrite'=>SESSION_CSRF_POST, 'csrf_validate'=>SESSION_CSRF_POST]); ?>
+<?php session_start();?>
+<?php include_once 'Include/header.php'  ; ?>
+<?php include_once 'myfunctions.php'  ; ?>
 <?php
 // If logged in then redirecting to upload page
 if (isset($_SESSION['Username']))
@@ -19,8 +21,9 @@ if (isset($_SESSION['Username']))
                 <div class="card fat ">
                     <div class="card-body">
                         <form class="form-signin" action="login.php" method="post" autocomplete="off">
-                            <?php   $_SESSION['token'] = md5(uniqid(mt_rand(), true));  ?>
-                            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+                            <?php   $_SESSION['token_login'] = bin2hex(generateRandomString(32)); ?>
+                            <input type="hidden" name="token_login" value="<?php echo $_SESSION['token_login']; ?>">
+
                             <div class="form-group">
                                 <div class="brand"></div>
                                 <div class="text-center">

@@ -1,21 +1,28 @@
 <?php include_once 'Include/header.php';?>
+<?php include_once 'myfunctions.php';?>
+<?php //session_start(['csrf_rewrite'=>SESSION_CSRF_POST, 'csrf_validate'=>SESSION_CSRF_POST]); ?>
+<?php session_start();?>
+
 <title><?= APP_TITLE ?></title>
 
 <div class="container-fluid">
-    <?php
-    session_start(); /* Starts the session */
-
-    echo "Welcome " . $_SESSION['Username'] . " To Your Panel";
-
-    ?>
+    <?php echo "Welcome " . $_SESSION['Username'] . " To Your Panel"; ?>
     <br><br>
     <form action="uploadfiles.php" method="post" enctype="multipart/form-data">
-        <?php   $_SESSION['token'] = md5(uniqid(mt_rand(), true));  ?>
-        <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+        <?php   $_SESSION['token_upload'] = bin2hex(generateRandomString(32)); ?>
+        <input type="hidden" name="token_upload" value="<?php echo $_SESSION['token_upload']; ?>">
 
         Select File to upload:
         <input type="file" name="fileToUpload" id="fileToUpload" class="btn btn-light">
         <input type="submit" value="Upload File" name="submit" class="btn btn-success">
+    </form>
+
+    <form action="myfunctions.php" method="post" class="form-group col-4 d-flex" >
+        <?php   $_SESSION['token_new_folder'] = bin2hex(generateRandomString(32)); ?>
+        <input type="hidden" name="token_new_folder" value="<?php echo $_SESSION['token_new_folder']; ?>">
+
+        <input type="text" class="form-control " placeholder="Enter Name of Folder">
+        <input type="submit" type="hidden" value="New Folder" class="btn btn-warning ml-2" name="createNewFolder">
     </form>
 
     <!--    <div class="col-4">-->

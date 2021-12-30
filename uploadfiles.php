@@ -1,7 +1,9 @@
 <?php
 include 'Include/header.php';
+include 'myfunctions.php';
 session_start();
 if(isset($_FILES['fileToUpload'])){
+
     $errors= array();
     $file_name = $_FILES['fileToUpload']['name'];
     $file_size =$_FILES['fileToUpload']['size'];
@@ -21,13 +23,18 @@ if(isset($_FILES['fileToUpload'])){
     }
 
 
-    $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+//    $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+    $token = $_POST['token_upload'];
 
-    if (!$token || $token !== $_SESSION['token']) {
+    if (!$token || $token !== $_SESSION['token_upload']) {
         // return 405 http status code
         header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
         exit;
     } else {
+
+
+// todo validation
+
         if(empty($errors)==true){
             move_uploaded_file($file_tmp,$_SESSION["Username"].'/'.$file_name);
             header("location: upload.php ") ;
