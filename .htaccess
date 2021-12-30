@@ -1,5 +1,5 @@
 <IfModule mod_rewrite.c>
-RewriteEngine Off
+RewriteEngine On
 RewriteBase /
 RewriteRule ^index.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -14,10 +14,11 @@ RewriteCond %{HTTP_REFERER} !^http(s)?://(.+\.)?localhost\FileExplorer\ [NC]
 RedirectMatch 404 /\.git
 
 
-#<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
-# Order Allow,Deny
+<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
+ Order Allow,Deny
+ Allow from  192.168.1.130
 # Deny from all
-#</FilesMatch>
+</FilesMatch>
 
 #<Directory   "C:/xampp/htdocs/dashboard">
 #    Require ip  192.168.1.130

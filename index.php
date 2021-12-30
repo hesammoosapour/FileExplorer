@@ -1,26 +1,10 @@
-<?php include_once 'Include/header.php';?>
+<?php include_once 'Include/header.php'; ?>
 <?php
-$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ?
-    "https://" : "http://";
-
-$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-
-if (isset($url))
-{
-    if (strpos($url, '/') !== false || strpos($url, '../') !== false ||
-        strpos($url, '..') !== false )
-    {
-
-        die("<br><h4 class=' badge-danger'>Wrong Request</h4>
-             <a href='index.php' type='button' class='btn btn-primary'>Back</a>");
-
-//            throw new Exception('Wrong URL');
-    }
-
-}
+// If logged in then redirecting to upload page
+if (isset($_SESSION['Username']))
+    header('Location:' . 'http://' .$_SERVER['HTTP_HOST']. '/'.$APP_NAME . '/upload.php' );
 
 ?>
-
 <?php define('APP_TITLE', 'My File Explorer'); ?>
 <!doctype html>
 <html lang="en">
