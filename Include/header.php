@@ -14,6 +14,6 @@
 <?php
 
 define('APP_TITLE', 'FileExplorer');
-
+$upload_page_url = 'http://localhost/FileExplorer/upload.php';
 
 ?>

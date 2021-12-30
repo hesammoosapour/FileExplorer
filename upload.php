@@ -17,14 +17,23 @@
         <input type="submit" value="Upload File" name="submit" class="btn btn-success">
     </form>
 
-    <form action="myfunctions.php" method="post" class="form-group col-4 d-flex" >
-        <?php   $_SESSION['token_new_folder'] = bin2hex(generateRandomString(32)); ?>
-        <input type="hidden" name="token_new_folder" value="<?php echo $_SESSION['token_new_folder']; ?>">
+    <div class="row">
+        <form action="myfunctions.php" method="post" class="form-group col-4 d-flex" >
+            <?php   $_SESSION['token_new_folder'] = bin2hex(generateRandomString(32)); ?>
+            <input type="hidden" name="token_new_folder" value="<?php echo $_SESSION['token_new_folder']; ?>">
 
-        <input type="text" class="form-control " placeholder="Enter Name of Folder">
-        <input type="submit" type="hidden" value="New Folder" class="btn btn-warning ml-2" name="createNewFolder">
-    </form>
+            <input type="text" class="form-control " placeholder="Enter Name of Folder" name="new_folder_name" required>
+            <input type="submit"  value="New Folder" class="btn btn-warning ml-2" name="createNewFolder">
+        </form>
 
+        <form action="myfunctions.php" method="post" class="form-group col-4 d-flex" >
+            <?php   $_SESSION['token_new_file'] = bin2hex(generateRandomString(32)); ?>
+            <input type="hidden" name="token_new_file" value="<?php echo $_SESSION['token_new_file']; ?>">
+
+            <input type="text" class="form-control " placeholder="Enter Name of File" name="new_file_name" required>
+            <input type="submit"  value="New File" class="btn btn-secondary ml-2" name="createNewFile">
+        </form>
+    </div>
     <!--    <div class="col-4">-->
     <!--        <form action="myfunctions.php" method="post">-->
     <!--            <p class="mt-3"><label for="newfilename"></label></p>-->

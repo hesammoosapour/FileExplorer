@@ -33,8 +33,6 @@ if(isset($_FILES['fileToUpload'])){
     } else {
 
 
-// todo validation
-
         if(empty($errors)==true){
             move_uploaded_file($file_tmp,$_SESSION["Username"].'/'.$file_name);
             header("location: upload.php ") ;
@@ -42,7 +40,6 @@ if(isset($_FILES['fileToUpload'])){
             foreach ($errors as $error) {
                 echo "<h4 class=' badge-danger'>$error</h4>";
             }
-            $upload_page_url = 'http://localhost/FileExplorer/upload.php';
 
             echo   "<a href=$upload_page_url   class='btn btn-primary'>" . "Back" . "</a>";
 

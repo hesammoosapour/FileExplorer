@@ -6,8 +6,6 @@ session_start(); /* Starts the session */
 /* Check Login form submitted */
 if(isset($_POST['submit_login_form'])){
 
-
-
 //    $token = filter_input(INPUT_POST, 'token_login', FILTER_SANITIZE_STRING);
 
     $token = $_POST['token_login'];
@@ -24,7 +22,7 @@ if(isset($_POST['submit_login_form'])){
 //        $Username = isset($_POST['Username']) ? $_POST['Username'] : '';
 
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "post") {
             $Username = test_input($_POST["Username"]);
         }
 
