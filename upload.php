@@ -1,4 +1,4 @@
-<?php include_once 'include.php';?>
+<?php include_once 'Include/header.php';?>
 <div class="container-fluid">
     <?php
     session_start(); /* Starts the session */
@@ -121,7 +121,7 @@
         if(isset($_GET['view']) && $_GET['view'] == $file && !isset($_GET['p']))
         {
             //Define header information
-            include 'download-code.php';
+            include 'Include/download-code.php';
             header('Content-Disposition: attachment; filename="'.basename($file).'"');
             header('Content-Length: ' . filesize($file));
 
@@ -134,7 +134,7 @@
         if(isset($_GET['view']) && $_GET['view'] == $file && isset($_GET['p']) && $_GET['p']== $sub_dir)
         {
 //            $file =   "personal_guest/" . $file;
-            include 'download-code.php';
+            include 'Include/download-code.php';
 //            header("Location: ".$CurPageURL);
 
 //            $file = preg_replace('/\./', '%2e', $file, substr_count($file, '.') - 1);
