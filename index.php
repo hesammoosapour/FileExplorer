@@ -1,15 +1,14 @@
+<?php include_once 'Include/header.php'  ; ?>
+<?php include_once 'myfunctions.php'  ; ?>
 <!doctype html>
 <html lang="en">
 <title><?= APP_TITLE ?></title>
 <?php //session_start(['csrf_rewrite'=>SESSION_CSRF_POST, 'csrf_validate'=>SESSION_CSRF_POST]); ?>
 <?php session_start();?>
-<?php include_once 'Include/header.php'  ; ?>
-<?php include_once 'myfunctions.php'  ; ?>
 <?php
 // If logged in then redirecting to upload page
 if (isset($_SESSION['Username']))
     header('Location:' . 'http://' .$_SERVER['HTTP_HOST']. '/'. APP_TITLE . '/upload.php' );
-
 ?>
 
 <body>

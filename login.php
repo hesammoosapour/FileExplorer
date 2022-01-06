@@ -19,12 +19,12 @@ if(isset($_POST['submit_login_form'])){
         $logins = array('hesam' ,'guest');
 
         /* Check and assign submitted Username and Password to new variable */
-//        $Username = isset($_POST['Username']) ? $_POST['Username'] : '';
+        $Username = isset($_POST['Username']) ? $_POST['Username'] : '';
 
 
-        if ($_SERVER["REQUEST_METHOD"] == "post") {
-            $Username = test_input($_POST["Username"]);
-        }
+//        if ($_SERVER["REQUEST_METHOD"] == "post") {
+            $Username = test_input($Username);
+//        }
 
 
 

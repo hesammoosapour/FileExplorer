@@ -28,8 +28,20 @@ function createNewFile()
         if (!empty($_POST["new_file_name"])) {
 
             $new_file_name = test_input($_POST["new_file_name"]);
-            fopen($_SESSION['Username'].'/'. $new_file_name, "w");
-            header("location: upload.php");
+
+//            check for security validation later
+
+            $sub_dir = $_POST["sub_directory"];
+
+            $username = $_SESSION['Username'];
+
+            if (!empty($sub_dir)) {
+                fopen($username.'/'. $sub_dir.'/'. $new_file_name, "w");
+                header("location: upload.php?p=".$sub_dir);
+            }else {
+                fopen($username.'/'. $new_file_name, "w");
+                header("location: upload.php");
+            }
             exit();
         }else
             echo   "<a href=$upload_page_url   class='btn btn-primary'>" . "Back" . "</a>";
@@ -56,9 +68,20 @@ function createNewFolder()
         if (!empty($_POST["new_folder_name"])) {
 
             $new_folder_name = test_input($_POST["new_folder_name"]);
-            mkdir($_SESSION['Username'].'/'.$new_folder_name ,0700,true); //permissions are ignored on Windows.
 
-            header("location: upload.php");
+            $sub_dir = $_POST["sub_directory"];
+
+            $username = $_SESSION['Username'];
+
+            if (!empty($sub_dir)) {
+                mkdir($username.'/'.$sub_dir.'/'.$new_folder_name ,0700,true); //permissions are ignored on Windows.
+                header("location: upload.php?p=".$sub_dir);
+
+            }else {
+                mkdir($username.'/'.$new_folder_name ,0700,true); //permissions are ignored on Windows.
+                header("location: upload.php");
+            }
+
             exit();
         }else
             echo   "<a href=$upload_page_url   class='btn btn-primary'>" . "Back" . "</a>";

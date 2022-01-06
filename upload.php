@@ -22,6 +22,10 @@
             <?php   $_SESSION['token_new_folder'] = bin2hex(generateRandomString(32)); ?>
             <input type="hidden" name="token_new_folder" value="<?php echo $_SESSION['token_new_folder']; ?>">
 
+            <?php if (isset($_GET['p'])) : ?>
+                <input type="hidden" name="sub_directory" value="<?= $_GET['p']?>">
+            <?php endif; ?>
+
             <input type="text" class="form-control " placeholder="Enter Name of Folder" name="new_folder_name" required>
             <input type="submit"  value="New Folder" class="btn btn-warning ml-2" name="createNewFolder">
         </form>
@@ -29,6 +33,10 @@
         <form action="myfunctions.php" method="post" class="form-group col-4 d-flex" >
             <?php   $_SESSION['token_new_file'] = bin2hex(generateRandomString(32)); ?>
             <input type="hidden" name="token_new_file" value="<?php echo $_SESSION['token_new_file']; ?>">
+
+            <?php if (isset($_GET['p'])) : ?>
+                <input type="hidden" name="sub_directory" value="<?= $_GET['p']?>">
+            <?php endif; ?>
 
             <input type="text" class="form-control " placeholder="Enter Name of File" name="new_file_name" required>
             <input type="submit"  value="New File" class="btn btn-secondary ml-2" name="createNewFile">
@@ -67,6 +75,7 @@
         $string_lenght_supper_path = strlen($CurPageURL) - strlen($sub_dir) - 3;
         $higher_path =  substr($CurPageURL, 0, $string_lenght_supper_path);
 
+
         echo   "<a href=$higher_path   class='btn btn-primary'>" . "Back" . "</a>";
 
     }else
@@ -93,6 +102,10 @@
     }
 
     $dir = scandir($dirPath);
+
+    if (count($dir) <= 2) {
+        echo "<p class='text-center'>No files found here.</p>";
+    }
 
     foreach($dir as $index => $item)
     {
